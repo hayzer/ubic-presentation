@@ -1,4 +1,0 @@
-use Ubic::Service::SimpleDaemon;
-Ubic::Service::SimpleDaemon->new(
-bin => [ 'ubic-periodic', '--rotate-logs', '--period=60', '--stdout=~/repos/ubic-presentation/log/watchdog.log', '--stderr=~/repos/ubic-presentation/log/watchdog.err.log', 'ubic-watchdog' ],
-);

@@ -1,2 +1,0 @@
-use Ubic::Ping::Service;
-Ubic::Ping::Service->new;
