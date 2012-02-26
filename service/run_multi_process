@@ -1,0 +1,18 @@
+use Ubic::Multiservice::Simple;
+use Ubic::Service::SimpleDaemon;
+
+my $robot_service = 
+	Ubic::Service::SimpleDaemon->new(
+		bin  => "~/repos/ubic-presentation/bin/my_process.pl",
+		user => 'thomas',
+	);
+
+Ubic::Multiservice::Simple->new({
+	map{ 
+		("$_" => Ubic::Service::SimpleDaemon->new( 
+			bin    => "~/repos/ubic-presentation/bin/my_process.pl",
+			stdout => "~/repos/ubic-presentation/log/run_multi_process.stdout",
+			stderr => "~/repos/ubic-presentation/log/run_multi_process.stderr",
+		))
+	} (1..3)
+});

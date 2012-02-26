@@ -1,0 +1,9 @@
+use Ubic::Service::SimpleDaemon;
+
+my $scanner = Ubic::Service::SimpleDaemon->new(
+	bin    => "~/repos/ubic-presentation/bin/my_process.pl",
+	stdout => "~/repos/ubic-presentation/log/mb-scanner.stdout",
+	stderr => "~/repos/ubic-presentation/log/mb-scanner.stderr",
+	user   => 'thomas',
+);
+

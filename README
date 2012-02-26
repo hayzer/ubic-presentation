@@ -1,0 +1,20 @@
+#
+# "Ubic in a nutshell" 
+# Presentation + short demo for Perl Workshop 2012 in Israel
+# 
+# Author: Thomas Maier <hayzer@gmail.com>
+#
+
+Q. How to enable the demo?
+A. 
+ * install Ubic module from CPAN
+ * clone this repo: git clone git@github.com:hayzer/ubic-presentation.git
+ * # cd ubic-presentation 
+ * # ubic-admin setup (point all directories to ubic-presentation/)
+ * the finall result should be 
+   # ls ubic-presentation
+   bin/  data/  log/  README  service/  slides.html 
+ * # ubic status
+
+Good luck!
+
