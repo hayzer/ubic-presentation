@@ -18,3 +18,8 @@ A.
 
 Good luck!
 
+NOTE:
+If at any stage, you will like to run your own ubic service
+on this station - rerun ubic-admin and point your configuration
+to the correct directory.
+
