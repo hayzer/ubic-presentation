@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Presentazion</title>
+<link rel="stylesheet" type="text/css" href=".presentazion/presentazion.css" media="screen,projection,handheld">
+<link rel="stylesheet" type="text/css" href=".presentazion/presentazion-print.css" media="print">
+<script type="text/javascript" src=".presentazion/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src=".presentazion/presentazion.js"></script>
+</head>
+<body>
+<div class="slideshow">
+
+<!--<div class="slide">
+<p>Presentazion</p>
+</div>
+
+<div class="slide">
+<p>It's Friulian for <i>presentation</i></p>
+</div>
+
+<div class="slide">
+<h2>Design Goals</h2>
+<ul>
+<li>Everything centered</li>
+<li>Contents as big as possible</li>
+<li>Scale and display well on any resolution</li>
+<li>Center source code and left-align it</li>
+<li>Painless PDF export</li>
+<li>Single, easy to edit HTML file with<br>slide contents</li>
+</ul>
+</div>
+
+<div class="slide">
+<h2>Tech Features</h2>
+<ol>
+<li>Fast</li>
+<li>Cross browser, on fairly recent browsers</li>
+<li>Only one dependancy: jQuery (included)</li>
+<li>PDF export via <i>wkhtmltopdf</i></li>
+<li>Search</li>
+</ol>
+</div>-->
+
+<div class="slide">
+<h1>Ubic</h1>
+<p>Mangage your process effortless</p>
+</div>
+
+<div class="multislide">
+	while(1) {
+----
+	while(&lt;socket&gt;) {
+----
+	while True:
+----
+Ups, wrong workshop..
+----
+How to manage such a process?
+----
+    # ./run_program
+</div>
+<div class="slide">
+	<del># ./run_program</del>
+</div>
+<div class="slide">
+	<h1># ./run_program &</h1>
+</div>
+<div class="slide">
+	<del># ./run_program &#38;</del>
+</div>
+<div class="slide">
+	<h1># nohup ./run_program &</h1>
+</div>
+<div class="slide">
+	<del># nohup ./run_program &#38;</del>
+</div>
+<div class="slide">
+	<h3>initd</h3>
+</div>
+<div class="slide">
+	<h4><del>initd</del></h4>
+</div>
+<div class="slide">
+	<h3>How I would like to manage my process?</h3>
+</div>
+<div class="slide">
+	<h3>Basic needs</h3>
+	<ul>
+		<li>status</li>
+		<li>stop</li>
+		<li>start</li>
+		<li>restart</li>
+	</ul>
+</div>
+<div class="slide">
+	<h3>More..</h3>
+	<ul>
+		<li>watchdog</li>
+		<li>unify management for all processes</li>
+		<li>remote process status</li>
+		<li>multiple process instances</li>
+	</ul>
+</div>
+<div class="slide">
+	<p>Before you start the Ubic..</p>
+	<h4>ubic-admin</h4>
+</div>
+<div class="multislide">
+	And then...
+----
+	use Ubic::Service::SimpleDaemon;
+
+	my $process = Ubic::Service::SimpleDaemon-&gt;new(
+		bin    =&gt; "/path/to/run_process",
+		stdout =&gt; "/path/ubic/log/run_process.stdout",
+		stderr =&gt; "/path/ubic/log/run_process.stderr",
+		user   =&gt; 'wis',
+	);
+
+----
+	Multiple instances of process
+----
+	use Ubic::Multiservice::Simple;
+	use Ubic::Service::SimpleDaemon;
+
+	my $service = 
+		Ubic::Service::SimpleDaemon-&gt;new(
+			bin  =&gt; "/path/to/my_multi_process",
+		);
+
+	Ubic::Multiservice::Simple-&gt;new({
+		map{ 
+			("$_" =&gt; Ubic::Service::SimpleDaemon-&gt;new( 
+				bin    =&gt; "/path/to/my_multi_process",
+				stdout =&gt; "/path/to/ubic/log/my_multi_process.stdout",
+				stderr =&gt; "/path/to/ubic/log/my_multi_process.stderr",
+			))
+		} (1..5)
+	});
+----
+	Manage your Dancer application
+----
+	use Ubic::Service::Plack;
+
+	return Ubic::Service::Plack-&gt;new({
+		server =&gt; "Starman",
+		server_args =&gt; { 
+			env     =&gt; 'production',
+			host    =&gt; '127.0.0.1',
+			workers =&gt; 5,
+			port    =&gt; 3000,
+		},
+		app      =&gt; "/path/to/bin/app.pl",
+		app_name =&gt; 'mydancer',
+		stdout   =&gt; "/path/ubic/log/mydancer-stdout.log",
+		stderr   =&gt; "/path/ubic/log/mydancer-stderr.log",
+	});
+</div>
+<div class="slide">
+	<h3>And start to enjoy..</h3>
+	<ul>
+		<li>ubic status</li>
+		<li>ubic stop process</li>
+		<li>ubic start process</li>
+		<li>ubic restart process</li>
+	</ul>
+</div>
+<div class="slide">
+	<h3>Hands on..</h3>
+</div>
+
+<div class="slide">
+	<h3>Good documentation</h3>
+	<p>Ubic::Manual::Intro</p>
+	<p>Ubic::Manual::Overview</p>
+	<p>Ubic::Manual::FAQ</p>
+</div>
+
+<div class="slide">
+	<h3>Thanks to</h3>
+	<p>Vyacheslav Matjukhin</p>
+</div>
+
+<div class="slide">
+	<h3>End</h3>
+</div>
+
+<div id="mediatype"></div>
+</body>
+</html>
