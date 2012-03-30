@@ -18,11 +18,11 @@
 </div>
 
 <div class="multislide">
-while(1) {
+    while(1) {
 ----
-while(&lt;socket&gt;) {
+    while(&lt;socket&gt;) {
 ----
-while True:
+    while True:
 ----
 Ups, wrong workshop..
 ----
@@ -79,53 +79,53 @@ How to manage such a process?
 <div class="multislide">
 And then...
 ----
-use Ubic::Service::SimpleDaemon;
+    use Ubic::Service::SimpleDaemon;
 
-my $process = Ubic::Service::SimpleDaemon-&gt;new(
-bin    =&gt; "/path/to/run_process",
-stdout =&gt; "/path/ubic/log/run_process.stdout",
-stderr =&gt; "/path/ubic/log/run_process.stderr",
-user   =&gt; 'wis',
-);
+    my $process = Ubic::Service::SimpleDaemon-&gt;new(
+        bin    =&gt; "/path/to/run_process",
+        stdout =&gt; "/path/ubic/log/run_process.stdout",
+        stderr =&gt; "/path/ubic/log/run_process.stderr",
+        user   =&gt; 'wis',
+    );
 
 ----
 Multiple instances of process
 ----
-use Ubic::Multiservice::Simple;
-use Ubic::Service::SimpleDaemon;
+    use Ubic::Multiservice::Simple;
+    use Ubic::Service::SimpleDaemon;
 
-my $service = 
-Ubic::Service::SimpleDaemon-&gt;new(
-bin  =&gt; "/path/to/my_multi_process",
-);
+    my $service = 
+        Ubic::Service::SimpleDaemon-&gt;new(
+            bin  =&gt; "/path/to/my_multi_process",
+    );
 
-Ubic::Multiservice::Simple-&gt;new({
-map{ 
-("$_" =&gt; Ubic::Service::SimpleDaemon-&gt;new( 
-bin    =&gt; "/path/to/my_multi_process",
-stdout =&gt; "/path/to/ubic/log/my_multi_process.stdout",
-stderr =&gt; "/path/to/ubic/log/my_multi_process.stderr",
-))
-} (1..5)
-});
+    Ubic::Multiservice::Simple-&gt;new({
+        map{
+            ("$_" =&gt; Ubic::Service::SimpleDaemon-&gt;new( 
+                bin    =&gt; "/path/to/my_multi_process",
+                stdout =&gt; "/path/to/ubic/log/my_multi_process.stdout",
+                stderr =&gt; "/path/to/ubic/log/my_multi_process.stderr",
+            ))
+        } (1..5)
+    });
 ----
 Manage your Dancer application
 ----
-use Ubic::Service::Plack;
+    use Ubic::Service::Plack;
 
-return Ubic::Service::Plack-&gt;new({
-server =&gt; "Starman",
-server_args =&gt; { 
-env     =&gt; 'production',
-host    =&gt; '127.0.0.1',
-workers =&gt; 5,
-port    =&gt; 3000,
-},
-app      =&gt; "/path/to/bin/app.pl",
-app_name =&gt; 'mydancer',
-stdout   =&gt; "/path/ubic/log/mydancer-stdout.log",
-stderr   =&gt; "/path/ubic/log/mydancer-stderr.log",
-});
+    return Ubic::Service::Plack-&gt;new({
+        server =&gt; "Starman",
+        server_args =&gt; { 
+            env     =&gt; 'production',
+            host    =&gt; '127.0.0.1',
+            workers =&gt; 5,
+            port    =&gt; 3000,
+        },
+        app      =&gt; "/path/to/bin/app.pl",
+        app_name =&gt; 'mydancer',
+        stdout   =&gt; "/path/ubic/log/mydancer-stdout.log",
+        stderr   =&gt; "/path/ubic/log/mydancer-stderr.log",
+    });
 </div>
 <div class="slide">
 <h3>And start to enjoy..</h3>
